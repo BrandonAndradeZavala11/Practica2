@@ -1,25 +1,31 @@
-import logo from './logo.svg';
+import React, { useState } from "react";
 import './App.css';
+import Contador from './components/Contador';
+import Imagenes from './components/Imagenes';
 
 function App() {
+  const [colorAct, setColor] = useState('#FFFFFF');
+
+  //Componente de fondo(Background)
+  const cmbFondo = () =>{
+    const nuevoFondo = colorAct === '#FFFFFF' ? '#ffcc00' : '#FFFFFF';
+      setColor(nuevoFondo)
+  }
+  
+  
   return (
+    <header className="App-header" style={{
+      backgroundColor: colorAct}}>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Contador color = "black"></Contador>
+        <Imagenes></Imagenes>
+        <br></br><button onClick={cmbFondo}>Cambiar fondo</button>
     </div>
+</header>
   );
 }
+
+
+
 
 export default App;
